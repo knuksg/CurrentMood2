@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block body %}
+<link rel="stylesheet" href="/static/css/location.css">
+
+<h3>
+  현재 위치:
+  {% if location %}
+    {{ location }}
+  {% else %}
+  현재 위치를 설정해주세요.
+  {% endif %}
+</h3>
+
+<div class="map-container">
+  <div id="map-btn">
+    <i class="bi bi-geo-fill"></i> 현재 위치 재설정
+  </div>
+  <div class="map-item">
+    <input id="search-place-input" type="text" name="place" class="w-100" readonly placeholder='장소를 선택해주세요.'>
+    <div id="map"></div>
+  </div>
+  <div class="text-center">
+    <h3 class="m-0">추천 위치 리스트</h3>
+    <hr class="my-1">
+    <p id="place-1" onclick="placeInput(this.innerText)"></p>
+    <p id="place-2" onclick="placeInput(this.innerText)"></p>
+    <p id="place-3" onclick="placeInput(this.innerText)"></p>
+  </div>
+</div>
+
+<script type="text/javascript" src="/static/js/location.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQjvkVCuRWteXvMvioRJZ0P24bi_XSHaw&callback=initMap&libraries=marker,places&region=KR&v=beta" defer></script>
+{% endblock body %}

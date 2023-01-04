@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block body %}
+<form class="container mt-3" method="POST">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+  <!-- Register buttons -->
+  <div class="text-center">
+    <p>Not a member? <a class="nav-link" href="{% url 'accounts:signup' %}">signup</a></p>
+  </div>
+</form>
+{% endblock body %}

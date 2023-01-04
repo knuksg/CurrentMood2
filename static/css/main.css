@@ -1,9 +1,9 @@
 .main-songs {
-
+  
 }
 
 .main-songs .first {
-
+  margin-top: 1rem;
 }
 
 .main-songs .first #song-container {
@@ -18,3 +18,20 @@
 .main-songs .first #song-container p {
   margin: 0;
 }
+
+.main-songs .carousel {
+  margin-top: 1rem;
+}
+
+.main-songs .carousel ol {
+  margin-bottom: 0;
+}
+
+.main-songs .carousel .carousel-inner .carousel-item #song-container img {
+  width: 100%;
+}
+
+.main-songs .carousel .carousel-inner .carousel-item #song-container p {
+  margin: 0;
+}
+

@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'accounts',
     'main',
+    'imagekit',
     'django_shortcuts',
     'django_bootstrap5',
     'django.contrib.admin',
@@ -130,3 +131,7 @@ STATICFILES_DIRS = [STATIC_DIR]
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# User
+
+AUTH_USER_MODEL = "accounts.User"
