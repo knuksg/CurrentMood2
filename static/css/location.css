@@ -1,3 +1,8 @@
+h3 {
+  text-align: center;
+  margin-top: 1rem;
+}
+
 .map-container {
   display: flex;
   flex-direction: column;

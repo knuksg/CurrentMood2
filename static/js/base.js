@@ -7,7 +7,7 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // 유튜브 플레이어 생성
-var player
+var player, currentVideoId = 0
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
     height: '285',
@@ -57,7 +57,7 @@ function onPlayerReady(event) {
     }
 
     // 재생/정지 버튼
-    const videoBtn = document.querySelector("#video-btn")
+    var videoBtn = document.querySelector("#video-btn")
     videoBtn.addEventListener('click', function(event) {
       if (videoBtn.classList.contains("bi-play-fill")) {
         playVideo()
@@ -67,11 +67,8 @@ function onPlayerReady(event) {
       }
     })
 
-    // 현재 재생중인 곡의 인덱스를 초기화한다.
-    const currentVideoId = 0
-
     // 다음곡 버튼
-    const next = document.getElementById("next");
+    var next = document.getElementById("next");
     // 인덱스가 재생목록 범위 안에 있으면 다음곡을 재생하고 아니면 마지막곡을 재생한다.
     next.addEventListener("click", function() {
       if (currentVideoId < videoIDs.length - 1) {
@@ -84,7 +81,7 @@ function onPlayerReady(event) {
     });
 
     // 이전곡 버튼
-    const pre = document.getElementById("previous");
+    var pre = document.getElementById("previous");
     // 인덱스가 재생목록 범위 안에 있으면 이전곡을 재생하고 아니면 처음곡을 재생한다.
     pre.addEventListener("click", function() {
       if (currentVideoId > 0) {
@@ -296,8 +293,10 @@ document.addEventListener('click', function(e) {
 
     player.loadPlaylist( {
       playlist:videoIDs,
-      index: videoIDs.length - 1
+      index: currentVideoId
     } );
+
+    playVideo()
   }
 
   // 플레이리스트 뮤직 재생
@@ -393,7 +392,6 @@ let slideDown = (target, duration=500) => {
 }
 
 let slideUp = (target, duration=500) => {
-  console.log('asdf')
   target.style.removeProperty('display');
   let display = window.getComputedStyle(target).display;
 

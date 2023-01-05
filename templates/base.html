@@ -25,7 +25,13 @@
     <!-- place navbar here -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container">
-        <a class="navbar-brand" href="#">현재 위치</a>
+        <a class="navbar-brand" href="{% url 'accounts:location' %}">
+          {% if request.user.is_authenticated %}
+          {{ request.user.location }}
+          {% else %}
+          로그인해주세요.
+          {% endif %}
+        </a>
         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
           aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -33,7 +39,7 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
           <ul class="navbar-nav me-auto mt-2 mt-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" href="#" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
+              <a class="nav-link active" href="{% url 'main:main' %}" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">profile</a>
@@ -51,9 +57,10 @@
             </li>
             {% endif %}
           </ul>
-          <form class="d-flex my-2 my-lg-0">
-            <input class="form-control me-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <form class="d-flex my-2 my-lg-0" action="/search/" method="POST">
+            {% csrf_token %}
+            <input class="form-control" type="text" name="search-input" placeholder="Search">
+            <button class="btn btn-sm btn-outline-success ms-1 my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
       </div>

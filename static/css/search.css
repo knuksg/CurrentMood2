@@ -1,0 +1,21 @@
+#search-input {
+  text-align: center;
+}
+
+#search-input h3 {
+  display: inline;
+}
+
+#song-container {
+  display: flex;
+  gap: 1rem;
+}
+
+#song-container img {
+  width: 120px;
+  height: auto;
+}
+
+#song-container p {
+  margin: 0;
+}

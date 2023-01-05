@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block body %}
+<link rel="stylesheet" href="/static/css/search.css">
+
+<form id="search-form" class="d-flex my-2 my-lg-0" action="/search/" method="POST">
+  {% csrf_token %}
+  <input class="form-control" type="text" name="search-input" placeholder="{{ search_input }}">
+  <button class="btn btn-sm btn-outline-success ms-1 my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+<div id="search-list">
+</div>
+
+<!-- CDN axios -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<!-- static -->
+<script type="text/javascript" src="/static/js/search.js"></script>
+{% endblock body %}

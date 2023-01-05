@@ -11,7 +11,8 @@
   {% endif %}
 </h3>
 
-<div class="map-container">
+<form class="map-container" method="POST">
+  {% csrf_token %}
   <div id="map-btn">
     <i class="bi bi-geo-fill"></i> 현재 위치 재설정
   </div>
@@ -20,13 +21,14 @@
     <div id="map"></div>
   </div>
   <div class="text-center">
-    <h3 class="m-0">추천 위치 리스트</h3>
+    <h4 class="m-0">추천 위치 리스트</h4>
     <hr class="my-1">
     <p id="place-1" onclick="placeInput(this.innerText)"></p>
     <p id="place-2" onclick="placeInput(this.innerText)"></p>
     <p id="place-3" onclick="placeInput(this.innerText)"></p>
   </div>
-</div>
+  <input type="submit">
+</form>
 
 <script type="text/javascript" src="/static/js/location.js"></script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>

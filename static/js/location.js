@@ -114,13 +114,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 window.initMap = initMap;
 
-function placeToView(place) {
-  const placeToViewForm = document.querySelector('#place-to-view-form')
-  const placeToViewInput = document.querySelector('#place-to-view-input')
-  placeToViewInput.value = place
-  placeToViewForm.submit()
-}
-
 const mapBtn = document.querySelector('#map-btn')
   mapBtn.addEventListener('click', function (e) {
     initMap()

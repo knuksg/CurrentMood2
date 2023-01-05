@@ -47,6 +47,11 @@ def profile(request, pk):
     return render(request, 'accounts/profile.html')
 
 def location(request):
+    if request.method == 'POST':
+        place = request.POST.get('place', '')
+        user = request.user
+        user.location = place
+        user.save()
     location = request.user.location
     context = {
         'location': location,
